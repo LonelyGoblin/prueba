@@ -13,12 +13,39 @@ void main() async {
     runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
- // This widget is the root of your application.
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+
+class _MyAppState extends State<MyApp>{
+
+  final GlobalKey<NavigatorState> navegatorkey = new GlobalKey<NavigatorState>();
+
+  final GlobalKey<ScaffoldMessengerState> messageKey = new GlobalKey<ScaffoldMessengerState>();
+
+  @override
+  void initState() {
+    super.initState();
+
+    PushNotificationService.streamMessageController.listen((message) {
+      print('El mensaje  $message');
+
+      navegatorkey.currentState?.pushNamed('message', arguments: message);
+
+      final snackBar = SnackBar(content: Text(message));
+      messageKey.currentState?.showSnackBar(snackBar);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Holi',
+      navigatorKey: navegatorkey,
+      scaffoldMessengerKey: messageKey,
       debugShowCheckedModeBanner: false,
       initialRoute: 'home',
       routes: {

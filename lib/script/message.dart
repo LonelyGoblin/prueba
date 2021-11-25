@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:prueba/services/key_shar.dart';
 class MessageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MessageScreen'),
+        title: Text('He recibido la noti'),
       ),
       body: Center(
         child:
-            Text('Message Notification Screen', style: TextStyle(fontSize: 30)),
+            Text('Un 7', style: TextStyle(fontSize: 30)),
       ),
     );
   }
