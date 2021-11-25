@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:prueba/script/home.dart';
 import 'package:prueba/script/message.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-//import 'package:notificacion_push/services/key_sha.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:prueba/services/key_shar.dart';
 
-void main() {
-  void main() async {
+
+void main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await PushNotificationService.initializeApp();
+
     runApp(MyApp());
-  }
 }
+
 class MyApp extends StatelessWidget {
  // This widget is the root of your application.
   @override
